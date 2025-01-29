@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ollama-service:
+    build: .
+    command: python ./services/ollama.py
+    ports:
+      - "5000:5000"
+
+  products-service:
+    build: .
+    command: python ./services/products.py
+    ports:
+      - "3000:3000"
