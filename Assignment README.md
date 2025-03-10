@@ -1,8 +1,8 @@
 -open ollama2 and make sure it is running on  port 127.0.0.1:11434
 -open docker application 
 -open microservice project and run the project 
--run the following command to build a docker image for ollama.py: docker build -t Ollama .
--run the microservice called Ollama inside docker: docker run -p 5000:5000 Ollama
+-run the following command to build a docker image for ollama.py: docker build -t ollama .
+-run the microservice called Ollama inside docker: docker run -p 5000:5000 ollama
 -Hompage of chatbot is available as we enter the link through docker conatiner 
 -open postman use POST and write down the following address "http://127.0.0.1:5000/ask?Content-Type=application" 
 （
