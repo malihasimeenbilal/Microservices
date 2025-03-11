@@ -12,6 +12,10 @@ def home():
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
 
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"})
+
 @app.route("/ask", methods=["POST"])
 def ask_ollama():
     data = request.json
