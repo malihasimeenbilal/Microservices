@@ -15,7 +15,11 @@ For both machine, go to postman and POST http://{local IP address:5000/register}
 
 Then server machine GET http://{local IP address:5000/services} to get the current service json list
 
-Machines can also POST http://{Other IP address:5000/forward} with Body {
+Machines can also POST http://{Other IP address:5000/forward} with Body 
+{
     "service": "my-test-service",
     "message": "Hello from machine 2"
-} to send message to other machine
+} 
+to send message to other machine
+"service" need to match destination service name, 
+ex: server's service name is "service1" and client's service name is "service2" as registered, when client wants to send message to server, "service" needs to be "service1" and so on
