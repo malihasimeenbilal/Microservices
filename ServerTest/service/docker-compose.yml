@@ -1,0 +1,12 @@
+services:
+  traefik:
+    image: "traefik"
+    ports: 
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "E:/ServerTest/traefik:/traefik"
+    command: 
+      - "--api.insecure=true"
+      - "--providers.docker"
+      - "--entrypoints.web.address=:80"

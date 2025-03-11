@@ -1,0 +1,43 @@
+alive: LAPTOP-VTCKTQOO 10.150.39.136:8301
+leave
+clock: 1
+alive: LAPTOP-VTCKTQOO 10.150.39.136:8301
+leave
+clock: 2
+alive: LAPTOP-VTCKTQOO 10.150.39.136:8301
+leave
+clock: 3
+alive: LAPTOP-VTCKTQOO 10.150.39.136:8301
+leave
+clock: 4
+alive: LAPTOP-VTCKTQOO 10.150.39.136:8301
+leave
+clock: 5
+alive: LAPTOP-VTCKTQOO 10.150.39.136:8301
+leave
+clock: 6
+alive: LAPTOP-VTCKTQOO 10.150.39.136:9301
+leave
+clock: 7
+alive: LAPTOP-VTCKTQOO 10.150.39.136:9301
+clock: 8
+event-clock: 1
+alive: LAPTOP-VTCKTQOO 10.150.39.136:9301
+event-clock: 2
+alive: LAPTOP-VTCKTQOO 10.150.39.136:9301
+leave
+clock: 9
+alive: LAPTOP-VTCKTQOO 10.150.39.136:8301
+leave
+clock: 10
+alive: LAPTOP-VTCKTQOO 172.20.10.3:9301
+alive: Kaize-Laptop 172.20.10.4:9301
+clock: 11
+leave
+clock: 12
+alive: LAPTOP-VTCKTQOO 192.168.2.35:9301
+alive: Kaize-Laptop 192.168.2.26:9301
+clock: 13
+not-alive: Kaize-Laptop
+leave
+clock: 14
