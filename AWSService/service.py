@@ -7,8 +7,8 @@ import os
 app = Flask(__name__)
 port = int(os.environ.get('PORT', 5000))
 
-CONSUL_AGENT = "http://3.96.157.70:8500"
-OLLAMA_URL = "http://209.29.99.178:11434/api/generate"
+CONSUL_AGENT = "http://3.96.157.70:8500"                   # EC2 public IP address
+OLLAMA_URL = "http://209.29.99.178:11434/api/generate"     # Ollama local machine public IP address
 
 # Home endpoint
 @app.route("/")
