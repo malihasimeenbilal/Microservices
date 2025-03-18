@@ -1,25 +1,19 @@
-trae.zip is the traefik file, user needs to unzip it to a location, then add the unzipped folder to environment path. 
+We now use an AWS EC2 instance to construct a cloud server and run consul and traefik to bypass the campus network firewall restriction.
 
-To start the service, in consul/consul.hcl, users need to configure IP addresses. For the server, both bind_addr and retry-join should be the same local IP address. For clients, bind_addr is the local IP address, retry_join is the server machine's IP address.
+Because the EC2 instance uses t2.micro which only has 1G memory, the Ollama service runs on a local machine.
 
-In service/service.py, line 8 CONSUL_AGENT needs to be server machine's IP address.
+In service.py, line 10 CONSUL_AGENT needs to be the server's public IP address, which changes whenever the EC2 instance starts. line 11 OLLAMA_URL needs to be the local machine's public IP address.
 
+Since the service is running on the EC2, the local machines can access the service through the Postman directly.
 
-To start, in powershell, use "consul agent -config-dir={your consul folder address}" to start consul service. (Server machine first, then client)
+Go to postman and POST http://{EC2 public IP address:5000/register} to register a service
 
-Then, in a new powershell, go to service folder, use "docker compose up -d" to start docker service. 
+GET http://{EC2 public IP address:5000/services} to get the current service json list
 
-Then, in the service folder, use "python service.py" to start
-
-For both machine, go to postman and POST http://{local IP address:5000/register} to register service
-
-Then server machine GET http://{local IP address:5000/services} to get the current service json list
-
-Machines can also POST http://{Other IP address:5000/forward} with Body 
+POST http://{EC2 public IP addresss:5000/forward} with Body 
 {
     "service": "my-test-service",
-    "message": "Hello from machine 2"
+    "message": "Hello from a local machine"
 } 
-to send message to other machine
-"service" need to match destination service name, 
-ex: server's service name is "service1" and client's service name is "service2" as registered, when client wants to send message to server, "service" needs to be "service1" and so on
+to pass messages to the service
+"service" needs to match the registered destination service name
