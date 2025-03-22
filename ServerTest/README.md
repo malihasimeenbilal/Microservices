@@ -1,19 +1,26 @@
-We now use an AWS EC2 instance to construct a cloud server and run consul and traefik to bypass the campus network firewall restriction.
+We now use consul, traefik, and docker to implement the assignment.
 
-Because the EC2 instance uses t2.micro which only has 1G memory, the Ollama service runs on a local machine.
+Machine A serves as the server, and machine B serves as the client. Both can register for separate services. 
 
-In service.py, line 10 CONSUL_AGENT needs to be the server's public IP address, which changes whenever the EC2 instance starts. line 11 OLLAMA_URL needs to be the local machine's public IP address.
+In service.py, line 10 CONSUL_AGENT needs to be the server's IP address. 
 
-Since the service is running on the EC2, the local machines can access the service through the Postman directly.
+Both machines can access the service through the Postman directly.
 
-Go to postman and POST http://{EC2 public IP address:5000/register} to register a service
+Go to postman and POST http://{self IP address:5000/register} to register a service
 
-GET http://{EC2 public IP address:5000/services} to get the current service json list
+GET http://{self IP address:5000/services} to get the current service json list
 
-POST http://{EC2 public IP addresss:5000/forward} with Body 
+POST http://{self IP addresss:5000/forward} with Body 
 {
-    "service": "my-test-service",
+    "service": {target service name},
     "message": "Hello from a local machine"
 } 
 to pass messages to the service
-"service" needs to match the registered destination service name
+
+POST http://{the other machine's IP addresss:5000/ask} with Body 
+{
+    "prompt": "Hello"
+} 
+to talk to Ollama on the other machine and service. 
+
+If the service has no action in 2 minutes, the heartbeat function will deregister this service. 
